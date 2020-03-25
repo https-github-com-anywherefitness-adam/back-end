@@ -59,6 +59,21 @@ router.post('/login', (req, res) => {
     })
 })
 
+//Logout
+router.get('/logout', (req, res) => {
+    if(req.token){
+        req.token.destroy(err => {
+            if(err){
+                res.status(500).json({ message: "Failed to logout"})
+            } else {
+                res.status(200).json({ message: "You have successfully logged out"})
+            }
+        });
+    } else {
+        res.status(200).json({ message: "You have successfully logged out"})
+    }
+})
+
 // JWT TOKEN
 function getJwtToken(username){
     
