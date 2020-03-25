@@ -8,7 +8,7 @@ exports.up = function(knex, Promise) {
       tbl.boolean('client')
       tbl.boolean('instructor')
   })
-  .createTable('class', tbl => {
+  .createTable('classes', tbl => {
       tbl.increments()
       tbl.string('name', 64).notNullable().unique()
       tbl.string('type', 64).notNullable()
@@ -23,6 +23,6 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
   return knex.schema
-  .dropTableIfExists('class')
+  .dropTableIfExists('classes')
   .dropTableIfExists('user')
 };
